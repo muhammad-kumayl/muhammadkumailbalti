@@ -135,6 +135,30 @@
         .social-card.quora:hover { border-color: var(--color-quora); }
         .social-card.quora:hover .social-icon { color: var(--color-quora); }
 
+        /* --- Custom Flex Layout for Socials (4 Top, 3 Bottom) --- */
+        .social-flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Centers the bottom row */
+            gap: 1.5rem;
+        }
+        
+        /* Force 4 items per row on large screens */
+        .social-flex-container .social-card {
+            flex: 0 0 calc(25% - 1.2rem); 
+        }
+
+        /* Responsive Breakpoints for Socials */
+        @media (max-width: 992px) {
+            .social-flex-container .social-card { flex: 0 0 calc(33.33% - 1.5rem); } /* 3 per row on Tablet */
+        }
+        @media (max-width: 768px) {
+            .social-flex-container .social-card { flex: 0 0 calc(50% - 1.5rem); } /* 2 per row on Mobile */
+        }
+        @media (max-width: 480px) {
+            .social-flex-container .social-card { flex: 0 0 100%; } /* 1 per row on Small Mobile */
+        }
+
 
         /* --- Navigation --- */
         nav {
@@ -604,7 +628,7 @@
                 <p style="color:var(--text-muted)">Follow my journey on these platforms</p>
             </div>
             
-            <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1.5rem;">
+            <div class="social-flex-container">
                 
                 <a href="https://x.com/kumailbltii12" target="_blank" class="social-card twitter fade-in-up">
                     <i class="fab fa-x-twitter social-icon"></i>
