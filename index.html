@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Kumail Balti – SEO Expert & Developer</title>
+    <meta name="description" content="Portfolio of Muhammad Kumail Balti - SEO Expert, Cloud Stacking Specialist, and Web Tool Developer.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Reset & Variables --- */
+        :root {
+            --primary: #6366f1;
+            --secondary: #06b6d4;
+            --bg-dark: #0f172a;
+            --bg-card: rgba(30, 41, 59, 0.6);
+            --border: rgba(255, 255, 255, 0.08);
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            
+            /* Social Brand Colors */
+            --color-twitter: #1da1f2;
+            --color-linkedin: #0077b5;
+            --color-github: #333;
+            --color-medium: #00ab6c;
+            --color-instagram: #e1306c;
+            --color-quora: #b92b27;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- Utility Classes --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+        .flex { display: flex; }
+        .grid { display: grid; }
+        .justify-between { justify-content: space-between; }
+        .items-center { align-items: center; }
+        .gap-1 { gap: 0.5rem; }
+        
+        .text-gradient {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            font-weight: 600;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6); }
+
+        /* --- Components --- */
+        .project-card, .experience-card, .skills-category, .social-card, .education-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-card:hover, .education-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            background: rgba(30, 41, 59, 0.8);
+        }
+
+        .project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+        .project-icon { font-size: 1.5rem; color: var(--secondary); background: rgba(6, 182, 212, 0.1); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 10px; }
+        
+        .project-badge {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            color: var(--text-main);
+        }
+        .project-badge.featured { background: rgba(236, 72, 153, 0.15); border-color: rgba(236, 72, 153, 0.4); color: #f472b6; }
+
+        .project-content h4 { font-size: 1.2rem; margin-bottom: 0.5rem; color: #fff; }
+        .project-description { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; flex-grow: 1; }
+        .project-link { font-size: 0.85rem; color: var(--secondary); font-weight: 600; display: inline-flex; align-items: center; gap: 0.3rem; }
+        .project-link:hover { color: var(--primary); }
+
+        /* --- Education --- */
+        .education-card h3 { color: var(--secondary); font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .education-card h4 { font-weight: 400; color: var(--text-muted); font-size: 1rem; }
+
+        /* --- Social Cards --- */
+        .social-card { align-items: center; justify-content: center; text-align: center; padding: 2rem 1rem; cursor: pointer; }
+        .social-icon { font-size: 2.5rem; margin-bottom: 1rem; transition: 0.3s; }
+        .social-name { font-weight: 600; font-size: 1.1rem; }
+        .social-handle { font-size: 0.85rem; color: var(--text-muted); }
+        
+        .social-card.twitter:hover { border-color: var(--color-twitter); }
+        .social-card.twitter:hover .social-icon { color: var(--color-twitter); }
+        
+        .social-card.linkedin:hover { border-color: var(--color-linkedin); }
+        .social-card.linkedin:hover .social-icon { color: var(--color-linkedin); }
+        
+        .social-card.github:hover { border-color: #fff; }
+        .social-card.github:hover .social-icon { color: #fff; }
+        
+        .social-card.medium:hover { border-color: var(--color-medium); }
+        .social-card.medium:hover .social-icon { color: var(--color-medium); }
+        
+        .social-card.instagram:hover { border-color: var(--color-instagram); }
+        .social-card.instagram:hover .social-icon { color: var(--color-instagram); }
+        
+        .social-card.quora:hover { border-color: var(--color-quora); }
+        .social-card.quora:hover .social-icon { color: var(--color-quora); }
+
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-inner { height: 70px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 800; font-size: 1.5rem; }
+        .nav-links { gap: 2rem; display: flex; }
+        .nav-links a:hover { color: var(--secondary); }
+        .mobile-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
+
+        /* --- Hero --- */
+        .hero { min-height: 90vh; padding-top: 100px; display: flex; align-items: center; }
+        .hero-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 3rem; align-items: center; }
+        h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1rem; font-weight: 800; }
+        
+        /* --- Grids --- */
+        section { padding: 4rem 0; }
+        .section-title { text-align: center; margin-bottom: 3rem; }
+        .section-title h2 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+        
+        .category-header { display: flex; align-items: center; gap: 0.8rem; margin: 3rem 0 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+        .category-header i { color: var(--secondary); font-size: 1.5rem; }
+        .category-header h3 { font-size: 1.5rem; }
+
+        .compact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* --- Experience --- */
+        .experience-header { display: flex; justify-content: space-between; margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        .experience-title h3 { font-size: 1.3rem; color: var(--primary); }
+        .experience-title h4 { font-size: 1rem; color: var(--text-main); font-weight: 400; }
+        .experience-duration { font-size: 0.85rem; background: var(--border); padding: 0.2rem 0.6rem; border-radius: 4px; height: fit-content; }
+        .experience-description ul { list-style-type: disc; padding-left: 1.2rem; color: var(--text-muted); font-size: 0.95rem; }
+        .experience-description li { margin-bottom: 0.5rem; }
+
+        /* --- Skills --- */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .skills-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        .skill-tag { padding: 0.35rem 0.9rem; border-radius: 999px; font-size: 0.8rem; border: 1px solid var(--border); background: rgba(255,255,255,0.03); }
+
+        /* --- Contact --- */
+        .contact-info { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 2rem; }
+        .contact-item {
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .contact-item:hover { background: var(--primary); border-color: var(--primary); }
+
+        /* --- Footer --- */
+        footer { border-top: 1px solid var(--border); padding: 3rem 0; text-align: center; color: var(--text-muted); margin-top: 4rem; }
+
+        /* --- Animations --- */
+        .fade-in-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* --- Mobile --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; position: absolute; top: 70px; left: 0; width: 100%; background: var(--bg-dark); flex-direction: column; padding: 2rem; text-align: center; border-bottom: 1px solid var(--border); }
+            .nav-links.active { display: flex; }
+            .mobile-toggle { display: block; }
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-grid { display: flex; flex-direction: column-reverse; }
+            h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-inner">
+            <div class="logo text-gradient">Kumail Balti</div>
+            <div class="mobile-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+            <div class="nav-links" id="navLinks">
+                <a href="#projects" onclick="toggleMenu()">Projects</a>
+                <a href="#extensions" onclick="toggleMenu()">Extensions</a>
+                <a href="#experience" onclick="toggleMenu()">Experience</a>
+                <a href="#socials" onclick="toggleMenu()">Socials</a>
+                <a href="#contact" onclick="toggleMenu()">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="fade-in-up">
+                <h1>Muhammad Kumail Balti</span></h1>
+                <p style="color:var(--text-muted); margin: 1rem 0 2rem; font-size: 1.1rem;">
+                    I am Muhammad Kumail Balti. An SEO Expert and Web Developer based in Islamabad. I specialize in Cloud Stacking, Automation, and building high-traffic web tools.
+                </p>
+                <div class="flex gap-1" style="flex-wrap: wrap; justify-content: inherit;">
+                    <a href="#projects" class="btn">View Portfolio</a>
+                    <a href="https://github.com/muhammad-kumayl" target="_blank" class="btn" style="background: transparent; border: 1px solid var(--border);">GitHub</a>
+                </div>
+            </div>
+            <div class="fade-in-up">
+                <div style="width: 250px; height: 250px; margin: auto; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--secondary)); display: flex; align-items: center; justify-content: center; font-size: 5rem; color: #0f172a; box-shadow: 0 0 50px rgba(99,102,241,0.3);">
+                    <i class="fas fa-user-astronaut"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <div class="section-title fade-in-up">
+                <h2>Featured Projects</h2>
+                <p style="color:var(--text-muted)">High-performance tools built for growth.</p>
+            </div>
+            
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+                <div class="project-card fade-in-up">
+                    <div class="project-header">
+                        <div class="project-icon"><i class="fas fa-user-friends"></i></div>
+                        <div class="project-badge featured">AI Powered</div>
+                    </div>
+                    <div class="project-content">
+                        <h4>AI Face Swap</h4>
+                        <p class="project-description">Advanced AI-powered application using machine learning for seamless, high-quality face swapping in real-time.</p>
+                        <a href="https://www.ai-face-swap.com/" target="_blank" class="project-link">ai-face-swap.com <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header">
+                        <div class="project-icon"><i class="fas fa-smile"></i></div>
+                        <div class="project-badge featured">Ai</div>
+                    </div>
+                    <div class="project-content">
+                        <h4>What Is My Face Shape</h4>
+                        <p class="project-description">Advanced AI-powered application using machine learning to accurately detect and analyze your face shape in real time.</p>
+                        <a href="https://whatismyfaceshape.net/" target="_blank" class="project-link">whatismyfaceshape.net <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-header fade-in-up">
+                <i class="fas fa-globe"></i>
+                <h3>Web Applications Suite</h3>
+            </div>
+            <div class="compact-grid">
+                
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fas fa-font"></i></div></div>
+                    <div class="project-content"><h4>Stylish Font IO</h4><p class="project-description">Generate cool and fancy text fonts for social media bios.</p><a href="https://stylishfont.io/" target="_blank" class="project-link">stylishfont.io</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fas fa-leaf"></i></div></div>
+                    <div class="project-content"><h4>Flora Via Decor</h4><p class="project-description">Home decor inspirations and interior design ideas.</p><a href="https://floraviadecor.com/" target="_blank" class="project-link">floraviadecor.com</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fas fa-mountain"></i></div><div class="project-badge">Personal</div></div>
+                    <div class="project-content"><h4>Balti.pk</h4><p class="project-description">Regional blog covering Skardu, Baltistan and personal insights.</p><a href="https://balti.pk/" target="_blank" class="project-link">balti.pk</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fas fa-video"></i></div></div>
+                    <div class="project-content"><h4>Video Cutter</h4><p class="project-description">Browser-based professional video trimming.</p><a href="https://videocutter.org/" target="_blank" class="project-link">videocutter.org</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fas fa-music"></i></div></div>
+                    <div class="project-content"><h4>MP3 Cut</h4><p class="project-description">Precise audio editing and trimming.</p><a href="https://mp3cut.org/" target="_blank" class="project-link">mp3cut.org</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fas fa-image"></i></div></div>
+                    <div class="project-content"><h4>JPG to WebP</h4><p class="project-description">High-performance image optimization.</p><a href="https://jpgtowebp.app/" target="_blank" class="project-link">jpgtowebp.app</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fas fa-th-large"></i></div></div>
+                    <div class="project-content"><h4>123 Apps</h4><p class="project-description">All-in-one suite of digital utility tools.</p><a href="https://123apps.org/" target="_blank" class="project-link">123apps.org</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fas fa-shield-alt"></i></div></div>
+                    <div class="project-content"><h4>Ad Blocker</h4><p class="project-description">Enhanced privacy and faster browsing.</p><a href="https://adblocker.dev/" target="_blank" class="project-link">adblocker.dev</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fab fa-whatsapp"></i></div></div>
+                    <div class="project-content"><h4>WA Chat Now</h4><p class="project-description">Direct WhatsApp without saving contacts.</p><a href="https://wachatnow.com/" target="_blank" class="project-link">wachatnow.com</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fas fa-icons"></i></div></div>
+                    <div class="project-content"><h4>Emoji Copy</h4><p class="project-description">Comprehensive Unicode emoji library.</p><a href="https://emojicopy.org/" target="_blank" class="project-link">emojicopy.org</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fas fa-globe-asia"></i></div></div>
+                    <div class="project-content"><h4>Country Code IO</h4><p class="project-description">Largest database of ISO country codes.</p><a href="https://countrycode.io/" target="_blank" class="project-link">countrycode.io</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fas fa-gamepad"></i></div></div>
+                    <div class="project-content"><h4>T-Rex Game</h4><p class="project-description">Enhanced Chrome dino game.</p><a href="https://trexgame.org/" target="_blank" class="project-link">trexgame.org</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fas fa-file-invoice-dollar"></i></div></div>
+                    <div class="project-content"><h4>Convert Bank Statement</h4><p class="project-description">Financial format conversion tool.</p><a href="https://convertebankstatement.com/" target="_blank" class="project-link">convertebankstatement.com</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fas fa-chart-bar"></i></div></div>
+                    <div class="project-content"><h4>Ngrams</h4><p class="project-description">Text analysis and linguistic research.</p><a href="https://ngrams.org/" target="_blank" class="project-link">ngrams.org</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fas fa-scan-face"></i></div></div>
+                    <div class="project-content"><h4>Face Type Detector</h4><p class="project-description">AI detector for face characteristics.</p><a href="https://facetypedetector.org/" target="_blank" class="project-link">facetypedetector.org</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="extensions" style="background: rgba(0,0,0,0.2);">
+        <div class="container">
+            <div class="category-header fade-in-up">
+                <i class="fab fa-chrome"></i>
+                <h3>Chrome Extension Arsenal</h3>
+            </div>
+            
+            <div class="compact-grid">
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fab fa-google"></i></div><div class="project-badge">SEO</div></div>
+                    <div class="project-content"><h4>GSC Enhancer</h4><p class="project-description">Google Search Console interactive data visualization.</p>
+                    <a href="https://chromewebstore.google.com/detail/google-search-console-enh/djlfbedmfimfbghmmaplocmieldkkkob?authuser=0&hl=en" target="_blank" class="project-link">Chrome Store</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fas fa-search"></i></div><div class="project-badge">SEO</div></div>
+                    <div class="project-content"><h4>Website SEO Checker</h4><p class="project-description">Instant on-page SEO analysis.</p>
+                    <a href="https://chromewebstore.google.com/detail/website-seo-checker/jfhjbellbcogljkhajiaacciibfmhfgb?authuser=0&hl=en" target="_blank" class="project-link">Chrome Store</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fas fa-code-branch"></i></div><div class="project-badge">Featured</div></div>
+                    <div class="project-content"><h4>XML Sitemap Extension</h4><p class="project-description">Generate sitemaps instantly from browser.</p>
+                    <a href="https://chromewebstore.google.com/detail/xml-sitemap/olnnnhmebnbandgnhfaiggfjoklbmgab?authuser=0&hl=en" target="_blank" class="project-link">Chrome Store</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fas fa-map-marker-alt"></i></div><div class="project-badge">Local</div></div>
+                    <div class="project-content"><h4>GMB Categories</h4><p class="project-description">Reveal hidden Google My Business categories.</p>
+                    <a href="https://chromewebstore.google.com/detail/gmb-categories/abidiibiancfpnhpdpmbdhnahobijloe?authuser=0&hl=en" target="_blank" class="project-link">Chrome Store</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fas fa-robot"></i></div><div class="project-badge">AI</div></div>
+                    <div class="project-content"><h4>AI QuickLaunch</h4><p class="project-description">Quick access to AI prompts and tools.</p>
+                    <a href="https://chromewebstore.google.com/detail/ai-quicklaunch/kphnbmcddpedkkbpklenmapjbkcphgcm?authuser=0&hl=en" target="_blank" class="project-link">Chrome Store</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fas fa-code"></i></div></div>
+                    <div class="project-content"><h4>Website Schema</h4><p class="project-description">Validate structured data.</p>
+                    <a href="https://chromewebstore.google.com/detail/website-schema/ijpjmaapfjljokkinfcnijgmkimbgfoi?authuser=0&hl=en" target="_blank" class="project-link">Chrome Store</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fas fa-heading"></i></div></div>
+                    <div class="project-content"><h4>Heading Extractor</h4><p class="project-description">Visualize H1-H6 document structure.</p>
+                    <a href="https://chromewebstore.google.com/detail/heading-extractor/dmghcobaamhdfjdpiomncmcdjmhhnile?authuser=0&hl=en" target="_blank" class="project-link">Chrome Store</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fab fa-css3"></i></div></div>
+                    <div class="project-content"><h4>View CSS</h4><p class="project-description">Inspect CSS of any element.</p>
+                    <a href="https://chromewebstore.google.com/detail/view-css/onlmbgemedcfbohodjgdgbbhkcbdjikf?authuser=0&hl=en" target="_blank" class="project-link">Chrome Store</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fas fa-image"></i></div></div>
+                    <div class="project-content"><h4>Favicon Detector</h4><p class="project-description">Extract high-res favicons.</p>
+                    <a href="https://chromewebstore.google.com/detail/favicon-detector/nnglpegaoddddkmcghldellcoomcionj?authuser=0&hl=en" target="_blank" class="project-link">Chrome Store</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fas fa-file-image"></i></div><div class="project-badge">Popular</div></div>
+                    <div class="project-content"><h4>Save Image As Type</h4><p class="project-description">Save images as PNG, JPG, WEBP, ICO instantly.</p>
+                    <a href="https://chromewebstore.google.com/detail/save-image-as-png-jpg-web/lnchllndlgeaepadiidnmhnemlkffjpo?authuser=0&hl=en" target="_blank" class="project-link">Chrome Store</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fas fa-toggle-on"></i></div></div>
+                    <div class="project-content"><h4>Extension Manager</h4><p class="project-description">Quickly enable/disable chrome extensions.</p>
+                    <a href="https://chromewebstore.google.com/detail/extension-manager/inghjfkejigdceanfokpekkmmnfhjbjc?authuser=0&hl=en" target="_blank" class="project-link">Chrome Store</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fas fa-clipboard-list"></i></div></div>
+                    <div class="project-content"><h4>Clipboard Manager</h4><p class="project-description">Manage clipboard history effectively.</p>
+                    <a href="https://chromewebstore.google.com/detail/clipboard-manager-clipboa/ljkmgapjfjgnffkmfdcpbnjjikgnoamc?authuser=0&hl=en" target="_blank" class="project-link">Chrome Store</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fab fa-linkedin"></i></div></div>
+                    <div class="project-content"><h4>LinkedIn Formatter</h4><p class="project-description">Format text for LinkedIn posts.</p>
+                    <a href="https://chromewebstore.google.com/detail/linkedin-formatter/lfjjnfalkjdbbbdhjeabfhioimccbcnp?authuser=0&hl=en" target="_blank" class="project-link">Chrome Store</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fab fa-whatsapp"></i></div></div>
+                    <div class="project-content"><h4>WADirect Extension</h4><p class="project-description">WhatsApp messaging helper tool.</p>
+                    <a href="https://chromewebstore.google.com/detail/wadirect-message/oilbcbfanlcgkiifgekacpbafobgknli?authuser=0&hl=en" target="_blank" class="project-link">Chrome Store</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fas fa-keyboard"></i></div></div>
+                    <div class="project-content"><h4>Arabic Keyboard</h4><p class="project-description">On-screen Arabic typing tool.</p>
+                    <a href="https://chromewebstore.google.com/detail/arabic-keyboard/gcgcdmjldohjlnalcfphikgdbflpkemc?authuser=0&hl=en" target="_blank" class="project-link">Chrome Store</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fas fa-flag"></i></div></div>
+                    <div class="project-content"><h4>Country Code Ext</h4><p class="project-description">Browser access to dialing codes.</p>
+                    <a href="https://chromewebstore.google.com/detail/country-code/bkhendidheflelgpogcfneoaahamajal?authuser=0&hl=en" target="_blank" class="project-link">Chrome Store</a></div>
+                </div>
+
+                <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fas fa-palette"></i></div></div>
+                    <div class="project-content"><h4>Slate Theme</h4><p class="project-description">Minimalist Slate theme for Chrome.</p>
+                    <a href="https://chromewebstore.google.com/detail/slate-theme-for-google-ch/pjanechopmbgelbpnopkgocneikmhcck?authuser=0&hl=en" target="_blank" class="project-link">Chrome Store</a></div>
+                </div>
+
+                 <div class="project-card fade-in-up">
+                    <div class="project-header"><div class="project-icon"><i class="fas fa-user-shield"></i></div></div>
+                    <div class="project-content"><h4>Block Analytics</h4><p class="project-description">Block your own visits from GA.</p>
+                    <a href="https://chromewebstore.google.com/detail/block-yourself-from-analy/abbpfmfhdagohdmbefhalchcjbapannn?hl=en&authuser=0" target="_blank" class="project-link">Chrome Store</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <div class="section-title fade-in-up">
+                <h2>Experience & Skills</h2>
+            </div>
+            
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 3rem;">
+                <div>
+                    <h3 style="margin-bottom: 2rem; color: var(--secondary);">Professional Experience</h3>
+                    <div class="flex" style="flex-direction: column; gap: 1.5rem;">
+                        <div class="experience-card fade-in-up">
+                            <div class="experience-header">
+                                <div class="experience-title">
+                                    <h3>SEO & Digital Marketing Expert</h3>
+                                    <h4>GB Digital Tech Islamabad</h4>
+                                </div>
+                                <div class="experience-duration">Current</div>
+                            </div>
+                            <div class="experience-description">
+                                <ul>
+                                    <li>Managing complete digital marketing portfolio: SEO, SEM, SMM, PPC, Email Marketing.</li>
+                                    <li>Curate high-quality content ranking on Google, ChatGPT, Perplexity, and Gemini.</li>
+                                    <li>Managing social media budget and CRM automations.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="experience-card fade-in-up">
+                            <div class="experience-header">
+                                <div class="experience-title">
+                                    <h3>SEO Specialist</h3>
+                                    <h4>Jantrah Tech Islamabad</h4>
+                                </div>
+                                <div class="experience-duration">6 Months</div>
+                            </div>
+                            <div class="experience-description">
+                                <ul>
+                                    <li>Successfully ranked high competition keywords.</li>
+                                    <li>Implemented comprehensive on-page and off-page strategies.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="skills">
+                     <h3 style="margin-bottom: 2rem; color: var(--primary);">Technical Arsenal</h3>
+                     <div class="flex" style="flex-direction: column; gap: 1.5rem;">
+                        <div class="skills-category fade-in-up">
+                            <h3><i class="fas fa-chart-line" style="color:var(--secondary)"></i> Digital Marketing</h3>
+                            <div class="skills-tags">
+                                <span class="skill-tag">SEO</span>
+                                <span class="skill-tag">PPC</span>
+                                <span class="skill-tag">SEM</span>
+                                <span class="skill-tag">Email Marketing</span>
+                                <span class="skill-tag">Content Marketing</span>
+                                <span class="skill-tag">Google Ads</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-category fade-in-up">
+                            <h3><i class="fas fa-code" style="color:var(--secondary)"></i> Development</h3>
+                            <div class="skills-tags">
+                                <span class="skill-tag">HTML/CSS</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">Chrome Extensions</span>
+                                <span class="skill-tag">API Integration</span>
+                                <span class="skill-tag">Automation</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-category fade-in-up">
+                            <h3><i class="fas fa-tools" style="color:var(--secondary)"></i> Professional Tools</h3>
+                            <div class="skills-tags">
+                                <span class="skill-tag">Ahrefs</span>
+                                <span class="skill-tag">SEMrush</span>
+                                <span class="skill-tag">Google Analytics 4</span>
+                                <span class="skill-tag">Tag Manager</span>
+                                <span class="skill-tag">Screaming Frog</span>
+                                <span class="skill-tag">HubSpot</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="section">
+        <div class="container">
+            <div class="section-title fade-in-up">
+                <h2>Education</h2>
+                <p style="color:var(--text-muted)">Academic background</p>
+            </div>
+            
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                <div class="education-card fade-in-up">
+                    <h3>Bachelor in Arts</h3>
+                    <h4>Quaid-e-Azam University Islamabad, Pakistan</h4>
+                </div>
+
+                <div class="education-card fade-in-up">
+                    <h3>F.A</h3>
+                    <h4>Islamabad College For Boys G-6/3 Islamabad, Pakistan</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="socials" style="background: rgba(255,255,255,0.02);">
+        <div class="container">
+            <div class="section-title fade-in-up">
+                <h2>Social Presence</h2>
+                <p style="color:var(--text-muted)">Follow my journey on these platforms</p>
+            </div>
+            
+            <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1.5rem;">
+                
+                <a href="https://x.com/kumailbltii12" target="_blank" class="social-card twitter fade-in-up">
+                    <i class="fab fa-x-twitter social-icon"></i>
+                    <div class="social-name">X (Twitter)</div>
+                    <div class="social-handle">@kumailbltii12</div>
+                </a>
+
+                <a href="https://www.linkedin.com/in/kumail-bltii/" target="_blank" class="social-card linkedin fade-in-up">
+                    <i class="fab fa-linkedin social-icon"></i>
+                    <div class="social-name">LinkedIn</div>
+                    <div class="social-handle">kumail-bltii</div>
+                </a>
+
+                <a href="https://github.com/muhammad-kumayl" target="_blank" class="social-card github fade-in-up">
+                    <i class="fab fa-github social-icon"></i>
+                    <div class="social-name">GitHub</div>
+                    <div class="social-handle">muhammad-kumayl</div>
+                </a>
+
+                <a href="https://medium.com/@kumailbalti" target="_blank" class="social-card medium fade-in-up">
+                    <i class="fab fa-medium social-icon"></i>
+                    <div class="social-name">Medium</div>
+                    <div class="social-handle">@kumailbalti</div>
+                </a>
+
+                <a href="https://www.instagram.com/kumailbltii?igsh=MWE1aTNhMG1seWVlcA==" target="_blank" class="social-card instagram fade-in-up">
+                    <i class="fab fa-instagram social-icon"></i>
+                    <div class="social-name">Instagram</div>
+                    <div class="social-handle">@kumailbltii</div>
+                </a>
+
+                <a href="https://www.quora.com/profile/Muhammad-Kumail-100" target="_blank" class="social-card quora fade-in-up">
+                    <i class="fab fa-quora social-icon"></i>
+                    <div class="social-name">Quora</div>
+                    <div class="social-handle">Muhammad Kumail</div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <h2 style="color: var(--text-main);">Let's Connect</h2>
+            <p>Available for projects in Islamabad & Skardu</p>
+            
+            <div class="contact-info">
+                <a href="mailto:kumailalee12@gmail.com" class="contact-item"><i class="fas fa-envelope"></i> Email Me</a>
+                <a href="#" class="contact-item"><i class="fas fa-map-marker-alt"></i> Islamabad, PK</a>
+                <a href="https://wa.me/" class="contact-item"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
+            
+            <p style="font-size: 0.9rem; margin-top: 2rem;">&copy; 2025 Muhammad Kumail Balti. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('active');
+        }
+
+        // Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach((el) => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
